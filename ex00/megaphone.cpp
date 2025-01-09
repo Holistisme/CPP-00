@@ -1,52 +1,49 @@
 /*********************************************************************************
 *                              Author: Alexy Heitz                               *
-*               File Name: /home/aheitz/CPP-00/ex00/megaphone.cpp                *
-*                   Creation Date: December 19, 2024 12:35 PM                    *
-*                    Last Updated: December 19, 2024 03:38 PM                    *
+*                     File Name: /CPP-00/ex00/megaphone.cpp                      *
+*                   Creation Date: December 19, 2024 01:02 PM                    *
+*                     Last Updated: January 9, 2025 10:40 AM                     *
 *                              Source Language: cpp                              *
 *                                                                                *
 *                            --- Code Description ---                            *
 *                   Just to make sure that everybody is awake!                   *
 *********************************************************************************/
 
-/********************************************************************************/
-
 #include <cctype>
 #include <iostream>
 
-typedef int				index;
-typedef char			*string;
+/********************************************************************************/
 
-#define	TO_UPPER(c)		static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
-#define WRITE_SPACE		std::cout << " ";
-#define WRITE_NEWLINE	std::cout << std::endl;
-#define MAKE_NOISE		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+typedef int	index;
+
+/********************************************************************************/
+
+#define	TO_UPPER(c)	static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
+#define MAKE_NOISE	"* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+#define SPACE		' '
 
 /********************************************************************************/
 
 /**
- * @brief Referring the arguments as a sentence in capital letters.
+ * @brief Converts arguments to uppercase and concatenates them into a single string.
  * 
- * @param argc The number of program parameters, in addition to the executable.
- * @param argv The table of character strings, with the executable and the arguments.
- * @return Will always return "EXIT_SUCCESS"
+ * @param argc The number of program parameters, including the executable.
+ * @param argv The array of arguments.
+ * @return int: Will always return "0".
  */
 int main(int argc, char *argv[]) {
-	index word = 1;
+	std::string	result = "";
 
 	if (argc > 1) {
-		while (argv[word]) {
-			index letter = 0;
-
-			while (argv[word][letter])
-				std::cout << TO_UPPER(argv[word][letter++]);
-			if (argv[++word])
-				WRITE_SPACE;
+		for (index word = 1 ; word < argc ; word++) {
+			for (index letter = 0 ; argv[word][letter] ; letter++)
+				result += TO_UPPER(argv[word][letter]);
+			if (word < argc - 1)
+				result += SPACE;
 		}
-		WRITE_NEWLINE;
 	}
 	else
-		MAKE_NOISE;
-
+		result = MAKE_NOISE;
+	std::cout << result << std::endl;
 	return (0);
 }

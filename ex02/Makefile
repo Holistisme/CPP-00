@@ -1,20 +1,22 @@
 ##################################################################################
 #                              Author: Alexy Heitz                               #
-#                        File Name: CPP-00/ex00/Makefile                         #
-#                   Creation Date: December 19, 2024 01:02 PM                    #
-#                     Last Updated: January 9, 2025 10:42 PM                     #
+#                        File Name: CPP-00/ex02/Makefile                         #
+#                    Creation Date: January 8, 2025 11:00 PM                     #
+#                     Last Updated: January 9, 2025 10:41 PM                     #
 #                           Source Language: makefile                            #
 #                                                                                #
 #                            --- Code Description ---                            #
 #               Instructions for compiling, cleaning, and more!                  #
 ##################################################################################
 
-NAME		= megaphone
+NAME		= "GlobalBanksters United Software™"
 
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-SOURCE		= megaphone.cpp
+SOURCE		= Account.cpp	\
+			tests.cpp
+
 OBJECTS		= $(SOURCE:.cpp=.o)
 
 all: $(NAME)

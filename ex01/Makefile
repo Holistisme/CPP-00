@@ -1,20 +1,34 @@
 ##################################################################################
 #                              Author: Alexy Heitz                               #
-#                        File Name: CPP-00/ex00/Makefile                         #
-#                   Creation Date: December 19, 2024 01:02 PM                    #
-#                     Last Updated: January 9, 2025 10:42 PM                     #
+#                        File Name: CPP-00/ex01/Makefile                         #
+#                   Creation Date: December 20, 2024 09:28 AM                    #
+#                     Last Updated: January 9, 2025 10:45 PM                     #
 #                           Source Language: makefile                            #
 #                                                                                #
 #                            --- Code Description ---                            #
 #               Instructions for compiling, cleaning, and more!                  #
 ##################################################################################
 
-NAME		= megaphone
+NAME		= "My Awesome Phonebook™"
 
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-SOURCE		= megaphone.cpp
+CONTACT		= ./contact/
+PHONEBOOK	= ./phonebook/
+UTILITIES	= ./utilities/
+
+SOURCE		= main.cpp							\
+			$(CONTACT)/addContact.cpp			\
+			$(CONTACT)/displayContact.cpp		\
+			$(CONTACT)/displaySummary.cpp		\
+			$(PHONEBOOK)/PhoneBook.cpp			\
+			$(UTILITIES)/confirmAction.cpp		\
+			$(UTILITIES)/equivalentString.cpp	\
+			$(UTILITIES)/getTheme.cpp			\
+			$(UTILITIES)/line.cpp				\
+			$(UTILITIES)/trim.cpp				\
+
 OBJECTS		= $(SOURCE:.cpp=.o)
 
 all: $(NAME)
