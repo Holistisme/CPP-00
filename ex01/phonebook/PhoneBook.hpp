@@ -2,7 +2,7 @@
 *                              Author: Alexy Heitz                               *
 *                File Name: /CPP-00/ex01/phonebook/PhoneBook.hpp                 *
 *                   Creation Date: December 20, 2024 11:48 AM                    *
-*                     Last Updated: January 9, 2025 11:34 PM                     *
+*                     Last Updated: January 9, 2025 03:39 PM                     *
 *                              Source Language: cpp                              *
 *                                                                                *
 *                            --- Code Description ---                            *
@@ -25,7 +25,7 @@ class	PhoneBook {
 		size_t	_contactCount;
 		index	_oldestSave;
 	public:
-		PhoneBook() : _contactCount(0), _oldestSave(0) {}
+		PhoneBook(void);
 		bool		searchContact(void) const;
 		void		addContact(void);
 		void		displayTable(void) const;

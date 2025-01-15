@@ -2,7 +2,7 @@
 *                              Author: Alexy Heitz                               *
 *                File Name: /CPP-00/ex01/phonebook/PhoneBook.cpp                 *
 *                    Creation Date: January 7, 2025 09:56 PM                     *
-*                     Last Updated: January 9, 2025 11:28 PM                     *
+*                     Last Updated: January 9, 2025 03:39 PM                     *
 *                              Source Language: cpp                              *
 *                                                                                *
 *                            --- Code Description ---                            *
@@ -17,6 +17,15 @@ static inline void	displayErrorAndErase(const std::string &error, const size_t &
 static inline bool	isValidID(const std::string &input, const int &contactCount);
 
 /********************************************************************************/
+
+/**
+ * @brief Construct a new PhoneBook object.
+ * 
+ */
+PhoneBook::PhoneBook(void) {
+	_contactCount = 0;
+	_oldestSave = 0;
+}
 
 /**
  * @brief Add a contact if there is room in the repertoire or replace the oldest one.
