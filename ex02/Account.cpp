@@ -84,7 +84,7 @@ void	Account::_displayTimestamp(void) {
 	std::tm		*local	= std::localtime(&current);
 
 	if (!local) {
-		std::cerr << "[ERROR: Unable to retrieve local time] ";
+		std::cout << "[ERROR: Unable to retrieve local time] ";
 		return;
 	}
 
