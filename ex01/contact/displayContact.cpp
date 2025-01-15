@@ -2,7 +2,7 @@
 *                              Author: Alexy Heitz                               *
 *              File Name: /CPP-00/ex01/contact/displayContact.cpp                *
 *                   Creation Date: December 19, 2024 05:47 PM                    *
-*                     Last Updated: January 9, 2025 10:50 PM                     *
+*                    Last Updated: January 15, 2025 02:22 PM                     *
 *                              Source Language: cpp                              *
 *                                                                                *
 *                            --- Code Description ---                            *
@@ -41,7 +41,7 @@ void	Contact::displayContact(const index &i) const {
 
 	for (index i = 0; i < LINES_TO_DISPLAY; i++)
 		displayField(field[i], IS_BORDER_LINE(i) ? PROMPT_SIZE + longestLine : longestLine);
-	if (_darkestSecret == "Never Gonna Give You Up") {
+	if (equivalentString(_darkestSecret, "NEVER GONNA GIVE YOU UP")) {
 		#ifdef __linux__
 			system("xdg-open https://www.youtube.com/watch?v=dQw4w9WgXcQ > /dev/null 2>&1");
 		#elif _WIN32

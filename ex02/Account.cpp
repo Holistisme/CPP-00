@@ -2,7 +2,7 @@
 //                                                                            //
 //                Account.cpp for GlobalBanksters United                      //
 //                Created on  : Thu Jan 08 10:54:00 2025                      //
-//                Last update : Wed Jan 09 21:33:00 2025                      //
+//                Last update : Wed Jan 15 14:40:00 2025                      //
 //       Made by : Alexy "aheitz" Heitz <aheitz@student.42mulhouse.fr>        //
 //                                                                            //
 // ************************************************************************** //
@@ -131,6 +131,7 @@ void	Account::makeDeposit(int deposit) {
 		<< "nb_deposits:" << ++_nbDeposits << std::endl;
 	_amount			+= deposit;
 	_totalAmount	+= deposit;
+	++_totalNbDeposits;
 }
 
 /**

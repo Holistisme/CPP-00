@@ -2,7 +2,7 @@
 *                              Author: Alexy Heitz                               *
 *              File Name: /CPP-00/ex01/contact/displaySummary.cpp                *
 *                    Creation Date: January 7, 2025 12:14 AM                     *
-*                     Last Updated: January 9, 2025 11:20 PM                     *
+*                    Last Updated: January 15, 2025 02:22 PM                     *
 *                              Source Language: cpp                              *
 *                                                                                *
 *                            --- Code Description ---                            *
@@ -25,10 +25,10 @@ static inline std::string	cutField(const std::string &field);
 void	Contact::displaySummary(const index &i) const {
 	std::ostringstream	oss;	oss << i + 1;
 
-	std::cout << COLUMN << std::setw(10) << cutField(oss.str()) << COLUMN
-		<< std::setw(10) << cutField(_firstName) << COLUMN
-		<< std::setw(10) << cutField(_lastName) << COLUMN
-		<< std::setw(10) << cutField(_nickName) << COLUMN << std::endl;
+	std::cout << COLUMN << cutField(oss.str()) << COLUMN
+		<< cutField(_firstName) << COLUMN
+		<< cutField(_lastName) << COLUMN
+		<< cutField(_nickName) << COLUMN << std::endl;
 }
 
 /**
@@ -38,9 +38,35 @@ void	Contact::displaySummary(const index &i) const {
  * @return std::string: the processed field, cut at 10 characters if necessary.
  */
 static inline std::string	cutField(const std::string &field) {
-	std::string	cuttedField = field;
+	std::string	cuttedField = "";
+	size_t		length = 0;
 
-	if (field.length() > 10)
-		return (field.substr(0,9) + ".");
-	return (field);
+	for (size_t index = 0 ; field[index] ; index++) {
+		if (length == 9 and field[index + 1]) {
+			cuttedField += '.';
+			break;
+		}
+		if (field[index] == '\t') {
+			if (length < 6) {
+				cuttedField += "    ";
+				length += 4;
+			}
+			else {
+				while (length++ < 9)
+					cuttedField += SPACE;
+				cuttedField += '.';
+				break;
+			}
+		}
+		else {
+			++length;
+			cuttedField += field[index];
+		}
+	}
+	if (length < 10) {
+		std::string	result(10 - cuttedField.length(), SPACE);
+		result += cuttedField;
+		return (result);
+	}
+	return (cuttedField);
 }

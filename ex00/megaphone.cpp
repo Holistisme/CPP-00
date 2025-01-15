@@ -2,7 +2,7 @@
 *                              Author: Alexy Heitz                               *
 *                     File Name: /CPP-00/ex00/megaphone.cpp                      *
 *                   Creation Date: December 19, 2024 01:02 PM                    *
-*                     Last Updated: January 9, 2025 10:40 AM                     *
+*                    Last Updated: January 15, 2025 02:11 AM                     *
 *                              Source Language: cpp                              *
 *                                                                                *
 *                            --- Code Description ---                            *
@@ -29,21 +29,28 @@ typedef int	index;
  * 
  * @param argc The number of program parameters, including the executable.
  * @param argv The array of arguments.
- * @return int: Will always return "0".
+ * @return int: Should always return "0".
  */
 int main(int argc, char *argv[]) {
-	std::string	result = "";
+	try {
+		std::string	result = "";
 
-	if (argc > 1) {
-		for (index word = 1 ; word < argc ; word++) {
-			for (index letter = 0 ; argv[word][letter] ; letter++)
-				result += TO_UPPER(argv[word][letter]);
-			if (word < argc - 1)
-				result += SPACE;
+		if (argc > 1) {
+			for (index word = 1 ; word < argc ; word++) {
+				for (index letter = 0 ; argv[word][letter] ; letter++)
+					result += TO_UPPER(argv[word][letter]);
+				if (word < argc - 1)
+					result += SPACE;
+			}
 		}
+		else
+			result = MAKE_NOISE;
+
+		std::cout << result << std::endl;
+		return (0);
 	}
-	else
-		result = MAKE_NOISE;
-	std::cout << result << std::endl;
-	return (0);
+	catch (...) {
+		std::cout << "Error: an allocation for the string failed!" << std::endl;
+		return (-1);
+	}
 }

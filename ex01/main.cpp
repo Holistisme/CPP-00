@@ -2,7 +2,7 @@
 *                              Author: Alexy Heitz                               *
 *                       File Name: /CPP-00/ex01/main.cpp                         *
 *                   Creation Date: December 20, 2024 09:24 AM                    *
-*                     Last Updated: January 9, 2025 11:59 PM                     *
+*                    Last Updated: January 15, 2025 02:21 PM                     *
 *                              Source Language: cpp                              *
 *                                                                                *
 *                            --- Code Description ---                            *
@@ -69,56 +69,61 @@ void	setTheme(int argc, char *argv[]) {
  * @return int: Normally, success.
  */
 int main(int argc, char *argv[]) {
-	PhoneBook	phonebook;
-	bool		displayed = false;
+	try {
+		PhoneBook	phonebook;
+		bool		displayed = false;
 
-	std::srand(std::time(0));
-	setTheme(argc, argv);
+		std::srand(std::time(0));
+		setTheme(argc, argv);
 
-	while (forever) {
-		std::string	input;
+		while (forever) {
+			std::string	input;
 
-		std::cout << getTheme()	<< "Choose the action to be performed:" << RESET << std::endl;
-		std::cout << "🕼  - "	<< GREEN	<< "ADD"	<< RESET << std::endl;
-		std::cout << "👁  - "	<< BLUE		<< "SEARCH"	<< RESET << std::endl;
-		std::cout << "🗴  - "	<< RED		<< "EXIT"	<< RESET << std::endl;
+			std::cout << getTheme()	<< "Choose the action to be performed:" << RESET << std::endl;
+			std::cout << "🕼  - "	<< GREEN	<< "ADD"	<< RESET << std::endl;
+			std::cout << "👁  - "	<< BLUE		<< "SEARCH"	<< RESET << std::endl;
+			std::cout << "🗴  - "	<< RED		<< "EXIT"	<< RESET << std::endl;
 
-		input = getInputLine();
-		trimSpaces(input, false);
+			input = getInputLine();
+			trimSpaces(input, false);
 
-		if (equivalentString(input, "ADD")) {
-			if (displayed) {
-				erasePreviousLines(8);
-				displayed = false;
+			if (equivalentString(input, "ADD")) {
+				if (displayed) {
+					erasePreviousLines(8);
+					displayed = false;
+				}
+				erasePreviousLines(5);
+				phonebook.addContact();
 			}
-			erasePreviousLines(5);
-			phonebook.addContact();
-		}
-		else if (equivalentString(input, "SEARCH")) {
-			if (displayed) {
-				erasePreviousLines(8);
-				displayed = false;
+			else if (equivalentString(input, "SEARCH")) {
+				if (displayed) {
+					erasePreviousLines(8);
+					displayed = false;
+				}
+				displayed = phonebook.searchContact();
 			}
-			displayed = phonebook.searchContact();
-		}
-		else if (equivalentString(input, "EXIT")) {
-			if (displayed) {
-				erasePreviousLines(8);
-				displayed = false;
+			else if (equivalentString(input, "EXIT")) {
+				if (displayed) {
+					erasePreviousLines(8);
+					displayed = false;
+				}
+				erasePreviousLines(5);
+				std::cout << "✆ Thank you for using " + getTheme() + "My Awesome PhoneBook™" RESET "! ✆" << std::endl;
+				return (EXIT_SUCCESS);
 			}
-			erasePreviousLines(5);
-			std::cout << "✆ Thank you for using " + getTheme() + "My Awesome PhoneBook™" RESET "! ✆" << std::endl;
-			return (EXIT_SUCCESS);
-		}
-		else {
-			erasePreviousLines(1);
-			std::cout << ERROR << "Unknown instruction, if you are drunk, avoid the phone while driving!" << std::endl;
-			sleep(1);
-			erasePreviousLines(5);
-			if (displayed) {
-				erasePreviousLines(8);
-				displayed = false;
+			else {
+				erasePreviousLines(1);
+				std::cout << ERROR << "Unknown instruction, if you are drunk, avoid the phone while driving!" << std::endl;
+				sleep(1);
+				erasePreviousLines(5);
+				if (displayed) {
+					erasePreviousLines(8);
+					displayed = false;
+				}
 			}
 		}
+	} catch (...) {
+		std::cout << "Error: an allocation for the string failed!" << std::endl;
+		return (EXIT_FAILURE);
 	}
 }

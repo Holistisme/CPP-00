@@ -2,7 +2,7 @@
 #                              Author: Alexy Heitz                               #
 #                        File Name: CPP-00/ex01/Makefile                         #
 #                   Creation Date: December 20, 2024 09:28 AM                    #
-#                     Last Updated: January 9, 2025 10:45 PM                     #
+#                    Last Updated: January 15, 2025 02:20 PM                     #
 #                           Source Language: makefile                            #
 #                                                                                #
 #                            --- Code Description ---                            #
@@ -11,8 +11,8 @@
 
 NAME		= "My Awesome Phonebook™"
 
-CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -std=c++98
+CXX			= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
 CONTACT		= ./contact/
 PHONEBOOK	= ./phonebook/
@@ -34,10 +34,10 @@ OBJECTS		= $(SOURCE:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(NAME)
 
 %.o: %.cpp
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJECTS)

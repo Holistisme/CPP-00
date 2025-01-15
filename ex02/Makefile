@@ -2,7 +2,7 @@
 #                              Author: Alexy Heitz                               #
 #                        File Name: CPP-00/ex02/Makefile                         #
 #                    Creation Date: January 8, 2025 11:00 PM                     #
-#                     Last Updated: January 9, 2025 10:41 PM                     #
+#                    Last Updated: January 15, 2025 02:40 PM                     #
 #                           Source Language: makefile                            #
 #                                                                                #
 #                            --- Code Description ---                            #
@@ -11,8 +11,8 @@
 
 NAME		= "GlobalBanksters United Software™"
 
-CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -std=c++98
+CXX			= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 
 SOURCE		= Account.cpp	\
 			tests.cpp
@@ -22,10 +22,10 @@ OBJECTS		= $(SOURCE:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(NAME)
 
 %.o: %.cpp
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJECTS)
