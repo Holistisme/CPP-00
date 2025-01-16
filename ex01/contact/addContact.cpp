@@ -2,7 +2,7 @@
 *                              Author: Alexy Heitz                               *
 *                File Name: /CPP-00/ex01/contact/addContact.cpp                  *
 *                    Creation Date: January 6, 2025 11:46 AM                     *
-*                     Last Updated: January 9, 2025 10:49 PM                     *
+*                    Last Updated: January 16, 2025 11:34 PM                     *
 *                              Source Language: cpp                              *
 *                                                                                *
 *                            --- Code Description ---                            *
@@ -54,14 +54,15 @@ static inline void	addInformation(field_mutable &field) {
 			field.data->clear();
 			sleep(1);
 			erasePreviousLines(3);
+			return;
 		}
-		else if (field.data->empty()) {
+		trimSpaces(*field.data, true);
+		if (field.data->empty()) {
 			std::cout << getMessage(field.prompt) << std::endl;
 			sleep(1);
 			erasePreviousLines(3);
 		}
 	}	while (field.data->empty());
-	trimSpaces(*field.data, true);
 }
 
 /**
